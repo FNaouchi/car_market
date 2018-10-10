@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Car List</title>
-</head>
-<body>
-	{% for car in cars %}
-		<a href="{{car.get_absolute_url}}">
-			<h1>
+{% extends "base.html" %}
+		
+{% block content %}
+    <div class="container">
+		{% for car in cars %}
+		<div class="jumbotron">
+			{% if car.car_img  %}
+				<img src="{{car.car_img.url}}" height="100%" width="100%">
+			{% endif %}
+				<a href="{{car.get_absolute_url}}">
+				<h1>
 				{{car.make}} - {{car.model}}
 				<small>
 					{{car.year}}
 				</small>
 			</h1>
 		</a>
-		<hr>
+
+		<a href="{% url 'car-update' car.id %}" class="btn btn-outline-dark mx-2">Update</a>
+		<a href="{% url 'car-delete' car.id %}" class="btn btn-outline-dark mx-2">Delete</a>
+		</div>
 	{% endfor %}
-</body>
-</html>
+</div>
+{% include "footer.html" %}
+{% endblock content %}

@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Car Detail</title>
-</head>
-<body>
-		<h1>
-			{{car.make}} - {{car.model}}
-			<small>
-				{{car.year}}
-			</small>
-		</h1>
-		<hr>
-</body>
-</html>
+{% extends "base.html" %}
+		
+{% block content %}
+    
+	<h1>
+		{{car.make}} - {{car.model}}
+		<small>
+			{{car.year}}
+		</small>
+	</h1>
+	<hr>
+{% endblock content %}
